@@ -6,6 +6,8 @@ OUT=curl-test
 SIMPLE_SRC=simple.c
 SIMPLE_OUT=simple-curl-test
 
+all: $(OUT) $(SIMPLE_OUT)
+
 $(OUT): $(SRC)
 	$(CC) $(CFLAGS) $(CLIBS) $(SRC) -o $(OUT)
 	strip $(OUT)
@@ -17,4 +19,4 @@ $(SIMPLE_OUT): $(SIMPLE_SRC)
 clean:
 	rm -f $(OUT) $(SIMPLE_OUT)
 
-.PHONY: clean
+.PHONY: clean all
