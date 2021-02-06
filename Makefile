@@ -1,10 +1,11 @@
 CC=gcc
-CFLAGS=-O2 $(curl-config --libs)
+CFLAGS=-O2
+CLIBS= $(shell curl-config --libs)
 SRC=main.c
 OUT=curl-test
 
 $(OUT): $(SRC)
-	$(CC) $(CFLAGS) $(SRC) -o $(OUT)
+	$(CC) $(CFLAGS) $(CLIBS) $(SRC) -o $(OUT)
 	strip $(OUT)
 
 clean:
